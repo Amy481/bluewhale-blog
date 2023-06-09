@@ -1,0 +1,33 @@
+<!-- 此html繼承自base.html-->
+{% extends "base.html" %}
+{% load  %}
+
+{% block title %}
+首頁
+{% endblock title %}
+
+{% block content %}
+
+<!--文章列表-->
+<div class="container">
+    <div class="row mt-2">
+
+        {% for article in articles %}
+        <div class="col-4 mb-4">
+            <!-- 卡片容器 -->
+            <div class="card h-100">
+                <h4 class="card-header">{{ article.title }}</h4>
+                <!--文章內容摘要-->
+                <div class="card-body">
+                    <p class="card-text">{{ article.body|slice:'100' }}...</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'article:article_detail' article.id %}" class="btn btn-primary">閱讀文章</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock content %}

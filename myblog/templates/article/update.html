@@ -1,0 +1,27 @@
+<!-- 此html繼承自base.html-->
+{% extends "base.html" %} {% load %}
+{% block title %} 更新文章 {% endblock title %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <form method="post" action=".">
+                <!--Django中要用POST數據都需要csrf_token-->
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">文章標題</label>
+                    <!--value終將數據初始職定為舊的文章內容-->
+                    <input type="text" class="form-control" id="title" name="title" value="{{ article.title }}">
+                </div>
+                <div class="form-group">
+                    <label for="body">文章正文</label>
+                    <textarea type="text" class="form-control" id="body" name="body"
+                        rows="12">{{ article.body }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">完成</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

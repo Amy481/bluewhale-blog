@@ -1,0 +1,27 @@
+<!-- 此html繼承自base.html-->
+{% extends "base.html" %}
+{% load %}
+
+{% block title %}
+文章標題
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h1 class="col-12 mt-4 mb-4">{{ article.title }}</h1>
+        <div class="col-12 alert alert-success">作者：{{ article.author }}
+            <form method="post" action="{% url 'article:article_delete' article.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">刪除文章</button>
+            </form>
+            · <a href="{% url 'article:article_update' article.id %}">編輯文章</a>
+        </div>
+        <!--文章內容-->
+        <div class="col-12">
+            <p>{{ article.body|safe }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
