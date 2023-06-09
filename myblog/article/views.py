@@ -6,28 +6,31 @@ from .forms import ArticlePostForm
 import markdown
 from django.contrib.auth.decorators import login_required
 
-
-# 限定有登入的人才能看到文章列表
-@login_required(login_url='userprofile:login')
-#文章列表
-def article_list(request):
-    articles = ArticlePost.objects.all()
-    context = { 'articles': articles }
-    return render(request, 'article/list.html', context)
-
+# 文章主頁
+def article_main(request):
+    articles = ArticlePost.objects.all().order_by('author__username')
+    context = {'articles': articles}
+    return render(request, 'article/main.html', context)
 
 # 文章詳細內容
 def article_detail(request, id):
     # 如果用戶已登入
-    if request.user.is_authenticated:
-        article = ArticlePost.objects.get(id=id)
-        # 讓html可適應markdown語法
-        article.body = markdown.markdown(article.body, extensions=['markdown.extensions.extra', 'markdown.extensions.codehilite'])
-        context = {'article': article}
-        return render(request, 'article/detail.html', context)
+    article = ArticlePost.objects.get(id=id)
+    # 讓html可適應markdown語法
+    article.body = markdown.markdown(article.body, extensions=['markdown.extensions.extra', 'markdown.extensions.codehilite'])
+    context = {'article': article}
+    return render(request, 'article/detail.html', context)
 
+#文章列表
+@login_required(login_url='userprofile:login')
+def article_list(request):
+    user = request.user
+    articles = ArticlePost.objects.filter(author=user)
+    context = {'articles': articles}
+    return render(request, 'article/list.html', context)
 
 # 創建文章
+@login_required(login_url='userprofile:login')
 def article_create(request):
     # 用戶提交數據(POST)
     if request.method == "POST":
@@ -54,6 +57,7 @@ def article_create(request):
 
 
 # 刪除文章
+@login_required(login_url='userprofile:login')
 def article_delete(request, id):
     # 根據id刪除對應文章
     article = ArticlePost.objects.get(id=id)
@@ -62,6 +66,7 @@ def article_delete(request, id):
 
 
 # 更新文章
+@login_required(login_url='userprofile:login')
 def article_update(request, id):
     # 獲取文章id
     article = ArticlePost.objects.get(id=id)

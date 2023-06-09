@@ -4,6 +4,8 @@ from . import views
 app_name = 'article'
 
 urlpatterns = [
+    # 主頁面
+    path('article-main/', views.article_main, name='article_main'),
     # 文章列表
     path('article-list/', views.article_list, name='article_list'),
     # 文章詳細內容
