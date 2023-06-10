@@ -1,6 +1,6 @@
 <!-- 此html繼承自base.html-->
 {% extends "base.html" %}
-{% load %}
+{% load static %}
 
 {% block title %}
 首頁
@@ -16,17 +16,18 @@
         {% for author in author_list %}
         <div class="col-md-12">
             <div class="card mb-4">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header">
                     <h5 class="card-title">{{ author.grouper }}</h5>
                 </div>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group">
                     {% for article in author.list %}
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <h6 class="card-title">{{ article.title }}</h6>
-                        </div>
-                        <a href="{% url 'article:article_detail' article.id %}" class="btn btn-primary">閱讀文章</a>
-                    </li>
+                    <a href="{% url 'article:article_detail' article.id %}" class="card-title">
+                        <li class="list-group-item">
+                            <div>
+                                {{ article.title }}
+                            </div>
+                        </li>
+                    </a>
                     {% endfor %}
                 </ul>
             </div>

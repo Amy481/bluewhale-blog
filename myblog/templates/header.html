@@ -6,12 +6,12 @@
                 {% if user.is_authenticated %}
                 <!-- 如果用戶已登入則顯示以下元件 -->
                 <li class="nav-item">
-                    <a class="nav-link btn" href="{% url 'article:article_create' %}">
+                    <a class="nav-link" href="{% url 'article:article_create' %}">
                         新增文章
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn" href="{% url 'article:article_list' %}">
+                    <a class="nav-link" href="{% url 'article:article_list' %}">
                         我的文章
                     </a>
                 </li>

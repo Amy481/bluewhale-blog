@@ -29,6 +29,9 @@ def article_list(request):
     context = {'articles': articles}
     return render(request, 'article/list.html', context)
 
+
+
+
 # 創建文章
 @login_required(login_url='userprofile:login')
 def article_create(request):
