@@ -1,0 +1,152 @@
+.card {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    margin:20px;
+    background-color: #eaf4f9; 
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: lightskyblue;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .card:hover:before {
+    opacity: 1;
+  }
+  
+  .card-header {
+    position: relative;
+    background-color: lightskyblue; 
+    color: #fff;
+  }
+  
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0056b3;
+    transition: color 0.3s ease;
+    text-decoration: none;
+    margin-bottom: 0;
+  }
+  
+  .card-title:hover {
+    color: cornflowerblue;
+  }
+
+  .card-text {
+    color: #666;
+  }
+  
+  .card-body {
+    padding-bottom: 0;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f7f7;
+  }
+    
+  .card-footer a:hover {
+    color:#aed0f3;
+  }
+  
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .list-group-item:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .list-group-item .card-title {
+    color: #007bff;
+  }
+
+  .article-detail {
+    margin-bottom: 40px;
+  }
+  
+  .article-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .alert-success {
+    font-size: large;
+    background-color: #eaf6ff;
+    color: #0c63e4;
+    border-color: #c3e6cb;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .alert-success a {
+    font-size: medium;
+    color: darkblue;
+    text-decoration: none;
+    float: right;
+    margin-right: 10px;
+  }
+  
+  .alert-success a:hover {
+    color: hotpink;
+    text-decoration: underline;
+  }  
+  
+  .form-group label {
+    font-weight: bold;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .form-control:focus {
+    background-color: #f5faff;
+  }
+  
+  .btn {
+    display: block;
+    width: 100px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    background-color: rgb(84, 182, 221);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    color: ivory;
+    background-color: #0056b3;
+  }
