@@ -6,9 +6,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
+            
             <div class="card">
                 <div class="card-header">登入</div>
                 <div class="card-body">
+                    
                     <form method="post" action=".">
                         {% csrf_token %}
                         <div class="form-group">
@@ -22,7 +24,12 @@
                             <div class="invalid-feedback">請輸入密碼</div>
                         </div>
                         <button type="submit" class="btn btn-primary ">確定</button>
+                        
                     </form>
+                    <br>
+                    <h5>沒有帳號嗎?</h5>
+                    <h5>點擊<a href='{% url "userprofile:register" %}'>註冊</a>！</h5>
+                    <br>
                 </div>
             </div>
         </div>
