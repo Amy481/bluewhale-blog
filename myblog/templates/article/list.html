@@ -26,6 +26,12 @@
                 </div>
                 <div class="card-footer">
                     <a href="{% url 'article:article_detail' article.id %}" class="btn">閱讀文章</a>
+                        <!-- 顯示瀏覽量 -->
+                    <span>
+                        <small class="col align-self-end" style="color: gray;">
+                            瀏覽: {{ article.total_views }}
+                        </small>
+                    </span>
                 </div>
             </div>
         </div>

@@ -12,12 +12,16 @@
         <h1 class="col-12 mt-4 mb-4">{{ article.title }}</h1>
         <div class="col-12 alert alert-success">
             作者：{{ article.author }}
+            <br>
+            瀏覽：{{ article.total_views }}
+            
             <!--只開放文章作者自己編輯和刪除文章-->
             {% if user.is_authenticated and user == article.author %}
             <a href="{% url 'article:article_delete' article.id %}">刪除文章</a>
             <a href="{% url 'article:article_update' article.id %}">編輯文章</a>
             {% endif %}
         </div>
+        
         <!--文章內容-->
         <div class="col-12">
             <p>{{ article.body|safe }}</p>

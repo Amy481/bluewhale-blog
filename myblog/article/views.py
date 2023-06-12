@@ -16,6 +16,8 @@ def article_main(request):
 def article_detail(request, id):
     # 如果用戶已登入
     article = ArticlePost.objects.get(id=id)
+    article.total_views += 1
+    article.save(update_fields=['total_views'])
     # 讓html可適應markdown語法
     article.body = markdown.markdown(article.body, extensions=['markdown.extensions.extra', 'markdown.extensions.codehilite'])
     context = {'article': article}
@@ -64,6 +66,11 @@ def article_create(request):
 def article_delete(request, id):
     # 根據id刪除對應文章
     article = ArticlePost.objects.get(id=id)
+    
+     # 過濾非作者的用戶
+    if request.user != article.author:
+        return HttpResponse("抱歉，你無權修改這篇文章。")
+    
     article.delete()
     return redirect("article:article_list")
 
@@ -73,6 +80,11 @@ def article_delete(request, id):
 def article_update(request, id):
     # 獲取文章id
     article = ArticlePost.objects.get(id=id)
+    
+     # 過濾非作者的用戶
+    if request.user != article.author:
+        return HttpResponse("抱歉，你無權修改這篇文章。")
+    
     # 用戶提交數據(POST)
     if request.method == "POST":
         article_post_form = ArticlePostForm(data=request.POST)

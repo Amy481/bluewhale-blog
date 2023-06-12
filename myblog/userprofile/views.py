@@ -63,13 +63,13 @@ def user_register(request):
 def user_delete(request, id):
     if request.method == 'POST':
         user = User.objects.get(id=id)
-        # 验证登录用户、待删除用户是否相同
+        # 驗證登入用戶、待刪除用戶是否相同
         if request.user == user:
-            #退出登录，删除数据并返回博客列表
+            #退出登入，刪除數據並返回blog列表
             logout(request)
             user.delete()
             return redirect("article:article_list")
         else:
-            return HttpResponse("你没有删除操作的权限。")
+            return HttpResponse("你沒有刪除操作的權限。")
     else:
-        return HttpResponse("仅接受post请求。")
+        return HttpResponse("僅接受post請求。")
