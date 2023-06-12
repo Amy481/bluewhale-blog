@@ -16,6 +16,8 @@ class ArticlePost(models.Model):
 
     # 創建文章的時間
     created = models.DateTimeField(default=timezone.now)
+    
+    total_views = models.PositiveIntegerField(default=0)
 
     # 定義model的metadata
     class Meta:
