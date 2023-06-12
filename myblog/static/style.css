@@ -1,3 +1,4 @@
+
 .card {
     position: relative;
     border: 1px solid #ccc;
@@ -53,6 +54,21 @@
   
   .card-body {
     padding-bottom: 0;
+  }
+
+  .card-body h5 {
+    margin-top: 20px;
+    font-size: small;
+    font-weight: bold;
+  }
+  
+  .card-body h5 a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .card-body h5 a:hover {
+    text-decoration: underline;
   }
   
   .card-footer {
@@ -118,6 +134,12 @@
   .form-group label {
     font-weight: bold;
   }
+
+  
+  .form-image {
+    width: 40vw;
+    margin: 5px;
+  }
   
   .form-control {
     width: 100%;
@@ -125,10 +147,13 @@
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease ;
+    
   }
-  
+
   .form-control:focus {
+    max-width: 100%;
+    min-width: 30vw;
     background-color: #f5faff;
   }
   
@@ -150,3 +175,6 @@
     color: ivory;
     background-color: #0056b3;
   }
+
+  
+  

@@ -11,5 +11,5 @@ urlpatterns = [
     # 用戶註冊
     path('register/', views.user_register, name='register'),
     # 用户删除
-    path('delete/<int:id>/', views.user_delete, name='delete'),
+    path('delete/', views.user_delete, name='delete'),
 ]

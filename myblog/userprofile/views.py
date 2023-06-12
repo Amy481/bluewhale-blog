@@ -58,11 +58,8 @@ def user_register(request):
     else:
         return HttpResponse("請使用GET或POST請求數據")
     
-
-@login_required(login_url='/userprofile/login/')
-def user_delete(request, id):
-    if request.method == 'POST':
-        user = User.objects.get(id=id)
+def user_delete(request):
+        user = request.user
         # 驗證登入用戶、待刪除用戶是否相同
         if request.user == user:
             #退出登入，刪除數據並返回blog列表
@@ -71,5 +68,3 @@ def user_delete(request, id):
             return redirect("article:article_list")
         else:
             return HttpResponse("你沒有刪除操作的權限。")
-    else:
-        return HttpResponse("僅接受post請求。")
