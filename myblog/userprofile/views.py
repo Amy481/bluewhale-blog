@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 # 引入驗證登入
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm, UserRegisterForm
 
 
